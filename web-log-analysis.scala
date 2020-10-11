@@ -63,7 +63,7 @@ val unq_url_visits = session_id.groupBy($"client", $"session_id")
 
 unq_url_visits.show()
 
-// 4. Top 10  most engaged user
+// 4. most engaged user
 val engaged_users = session_id.groupBy($"client",$"session_id").agg((unix_timestamp(max($"date_time")) - unix_timestamp(min($"date_time"))).as("session_time"))
 
 val most_engaged_users = engaged_users.groupBy($"client").agg(avg($"session_time")
