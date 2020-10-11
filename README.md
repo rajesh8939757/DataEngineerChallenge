@@ -1,3 +1,11 @@
+## Solution
+Please find the solution to above problems under web-log-analysis.scala
+
+Technologies used:
+    - Azure Databricks
+    - Spark
+    - Scala
+
 # DataEngineerChallenge
 
 This is an interview challenge for PayPay. Please feel free to fork. Pull Requests will be ignored.
@@ -61,7 +69,3 @@ We want to see how you handle:
 - Messy (ie real) data
 - Understanding data transformation
 This is not a pass or fail test, we want to hear about your challenges and your successes with this particular problem.
-
-## Rajesh Kumar's Solution
-
-Please find the solution to above problems under web-log-analysis.scala
