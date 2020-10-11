@@ -9,10 +9,11 @@ import org.apache.spark.sql.types._
 val file_location = "./data/2015_07_22_mktplace_shop_web_log_sample.log.gz"
 
 
-// The applied options are for CSV files. For other file types, these will be ignored.
+// Read the data and drop any null data
 val rawDF = spark.read.textFile(file_location).na.drop()
 val pattern= "^(\\S+) (\\S+) (\\S+):(\\S+) (\\S+):(\\S+) (\\S+) (\\S+) (\\S+) (\\S+) (\\S+) (\\S+) (\\S+) \"([^\"]*)\" \"([^\"]*)\" (\\S+) (\\S+)$"
 
+// cleaned DF with schema
 val cleanDF = rawDF.select(
     regexp_extract(col("value"),pattern, 1) as "timestamp",
     regexp_extract(col("value"),pattern, 2) as "elb",
@@ -34,8 +35,6 @@ val cleanDF = rawDF.select(
 val client_req = cleanDF.withColumn("date_time", $"timestamp".cast(TimestampType))
       .sort($"timestamp")
       .select($"client",$"req",$"date_time").na.drop()
-
-client_req.createOrReplaceTempView("client_req")
 
 // 1. Sessionize the data
 val window_of_cleint_ip = Window.partitionBy($"client").orderBy($"date_time")
