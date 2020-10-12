@@ -1,10 +1,12 @@
 ## Solution
 Please find the solution to above problems under web-log-analysis.scala
 
-Technologies used:
-    - Azure Databricks
-    - Spark
-    - Scala
+### Technologies used:
+- Azure Databricks
+- Spark
+- Scala
+
+And also please find the results attached with web_log_analysis.html for your reference
 
 # DataEngineerChallenge
 
